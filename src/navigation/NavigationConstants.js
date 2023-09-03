@@ -1,5 +1,13 @@
 export default {
     SPLASH_SCREEN: 'SplashScreen',
-    LOGIN_SCREEN: 'LoginScreen',
-    HOME_SCREEN: 'HomeScreen'
+    WELCOME_SCREEN: 'WelcomeScreen',
+    LOGIN: 'Login',
+    REGISTER: 'Register',
+    TAB_SCREEN: 'TabScreen',
+    HOME: 'Home',
+    PROFILE: 'Profile',
+    EMAIL: 'Email',
+    FUND: 'Fund',
+    MARKET: 'Market',
+    PORTFOLIO: 'Portfolio',
 }

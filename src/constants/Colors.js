@@ -1,5 +1,6 @@
 export default {
-    primaryColor: '#1779b8',
+    transparent: 'transparent',
+    primaryColor: '#34d49e',
     darkPrimaryColor: '#045097',
     lightestPrimaryColor: '#F4FAFF',
     splashBackgroundColor: '#F5F5F5',

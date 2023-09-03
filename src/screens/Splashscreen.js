@@ -9,14 +9,15 @@ const SplashScreen = ({ navigation }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            let userLoginData = await AsyncStorage.getItem('userLoginData')
+            let userLoginData = await AsyncStorage.getItem('SignInData')
+            console.log(userLoginData, 'uud')
             userLoginData = userLoginData != null ? JSON.parse(userLoginData) : false
 
-            if (userLoginData && userLoginData.isUserLoggedIn) {
+            if (userLoginData && userLoginData.userData) {
                 // authenticateUser(userLoginData.email)
-                navigateScreen(NavigationConstants.HOME_SCREEN)
+                navigateScreen(NavigationConstants.TAB_SCREEN)
             } else {
-                navigateScreen(NavigationConstants.LOGIN_SCREEN)
+                navigateScreen(NavigationConstants.WELCOME_SCREEN)
             }
         }
         fetchData()

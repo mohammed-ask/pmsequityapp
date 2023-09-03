@@ -10,10 +10,11 @@ const HomeScreen = ({ navigation }) => {
 
     const runscript = async () => {
         const data = await getValue('SignInData')
+        // const data = JSON.stringify(postData);
         const script = `
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'https://pmsequity.online/dashboard';
+                form.action = 'https://pmsequity.online/portfolio';
 
                 const input = document.createElement('input');
                 input.type = 'hidden';
@@ -24,16 +25,16 @@ const HomeScreen = ({ navigation }) => {
                 document.body.appendChild(form);
                 form.submit();
               `;
-        console.log(webViewRef.current, 'dd')
         webViewRef.current.injectJavaScript(script);
     }
 
     useEffect(() => {
         setTimeout(() => {
             setLoad(false)
-        }, 5000)
+        }, 3000)
 
     }, []);
+
     console.log(load, 'lll')
 
     return (
@@ -47,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
                     // onLoadProgress={runscript}
                     // onLayout={runscript}
                     ref={webViewRef}
-                    source={{ uri: 'https://pmsequity.online/dashboard' }}
+                    source={{ uri: 'https://pmsequity.online/portfolio' }}
                     startInLoadingState={true}
                     renderLoading={() => <LoadingSpinner />}
                 />

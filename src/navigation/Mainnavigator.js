@@ -7,6 +7,14 @@ import SplashScreen from '../screens/Splashscreen';
 import LoginScreen from '../screens/Login';
 import { Image, StyleSheet } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+// import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Portfolio from '../screens/Portfolio';
+import Market from '../screens/Market';
+import Email from '../screens/Email';
+import Fund from '../screens/Fund';
+import Profile from '../screens/Profile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,7 +23,10 @@ export const LoginStack = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={LoginScreen} />
+            {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
             <Stack.Screen name="TabScreen" component={TabScreen} />
         </Stack.Navigator>
     );
@@ -26,19 +37,26 @@ export const TabScreen = () => {
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 headerShown: false,
-                unmountOnBlur: true,
+                unmountOnBlur: false,
                 tabBarIcon: ({ focused, size, color }) => {
                     let iconName;
                     if (route.name === 'Home') {
-                        iconName = focused
-                            ? require('../assets/acthome.png')
-                            : require('../assets/home.png');
-                    } else if (route.name === 'LibraryScreen') {
-                        iconName = focused
-                            ? require('../assets/actexplore.png')
-                            : require('../assets/explore.png');
+                        iconName = 'view-dashboard';
+                        color = focused ? Colors.blackColor : Colors.grayColor;
+                    } else if (route.name === 'Market') {
+                        iconName = 'chart-bell-curve';
+                        color = focused ? Colors.whiteColor : Colors.whiteColor;
+                    } else if (route.name === 'Portfolio') {
+                        iconName = 'folder-table';
+                        color = focused ? Colors.blackColor : Colors.grayColor;
+                    } else if (route.name === 'Fund') {
+                        iconName = 'wallet';
+                        color = focused ? Colors.blackColor : Colors.grayColor;
+                    } else if (route.name === 'Profile') {
+                        iconName = 'account-cog';
+                        color = focused ? Colors.blackColor : Colors.grayColor;
                     }
-                    return <Image source={iconName} style={style.imgstyle} />;
+                    return <Icon name={iconName} color={color} size={22} />;
                 },
 
                 tabBarActiveTintColor: Colors.primaryColor,
@@ -51,10 +69,83 @@ export const TabScreen = () => {
                 name="Home"
                 component={HomeScreen}
                 options={{
+                    tabBarLabel: 'Home',
                     tabBarItemStyle: {
-                        borderRightWidth: 0.5,
-                        borderRightColor: '#E0E0E0',
+                        // borderRightWidth: 0.5,
+                        // borderRightColor: '#E0E0E0',
                         alignSelf: 'center',
+                    },
+                }}
+            />
+            <Tab.Screen
+                name="Portfolio"
+                component={Portfolio}
+                options={{
+                    tabBarLabel: 'Portfolio',
+                    tabBarItemStyle: {
+                        // borderRightWidth: 0.5,
+                        // borderRightColor: '#E0E0E0',
+                        alignSelf: 'center',
+                    },
+                }}
+            />
+            <Tab.Screen
+                name="Market"
+                component={Market}
+                options={{
+                    tabBarLabel: '',
+                    tabBarItemStyle: {
+                        maxWidth: 50,
+                        backgroundColor: Colors.primaryColor,
+                        height: 50,
+                        borderRadius: 40,
+                        marginBottom: 15,
+                        marginTop: 10,
+                        paddingTop: 14,
+                        marginHorizontal: 15,
+                        alignSelf: 'center'
+                    }
+                }}
+            />
+            <Tab.Screen
+                name="Email"
+                component={Email}
+                options={{
+                    tabBarButton: () => null,
+                    tabBarLabel: '',
+                    tabBarItemStyle: {
+                        // borderRightWidth: 0.5,
+                        // borderRightColor: '#E0E0E0',
+                        alignSelf: 'center',
+                        // justifyContent: 'flex-end',
+                        // backgroundColor: 'green'
+                    },
+                }}
+            />
+            <Tab.Screen
+                name="Fund"
+                component={Fund}
+                options={{
+                    tabBarLabel: 'Wallet',
+                    tabBarItemStyle: {
+                        // borderRightWidth: 0.5,
+                        // borderRightColor: '#E0E0E0',
+                        alignSelf: 'center',
+
+                    },
+                }}
+            />
+            <Tab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    tabBarLabel: 'Setting',
+                    tabBarItemStyle: {
+                        // borderRightWidth: 0.5,
+                        // borderRightColor: '#E0E0E0',
+                        alignSelf: 'center',
+                        // justifyContent: 'flex-end',
+                        // backgroundColor: 'green'
                     },
                 }}
             />
@@ -69,13 +160,13 @@ const style = StyleSheet.create({
         resizeMode: 'contain',
     },
     tabstyle: {
-        height: 82,
-        backgroundColor: '#F4FAFF',
-        width: '90%',
-        marginBottom: 15,
+        height: 70,
+        backgroundColor: Colors.whiteColor,
+        // width: '90%',
+        // marginBottom: 15,
         position: 'absolute',
-        marginLeft: '5%',
-        borderRadius: 16,
+        // marginLeft: '5%',
+        // borderRadius: 16,
         alignItems: 'center',
         shadowOffset: {
             width: 0,
@@ -84,11 +175,11 @@ const style = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 5,
         paddingTop: 14,
-        paddingBottom: 14,
+        paddingBottom: 15,
     },
     tablabel: {
-        fontSize: 12,
-        paddingBottom: 8,
-        fontWeight: '500',
-    },
+        fontSize: 11,
+        paddingBottom: 0,
+        fontWeight: '500'
+    }
 });
