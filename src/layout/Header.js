@@ -7,7 +7,7 @@ import Colors from '../constants/Colors';
 import { removeData } from '../utils/storage';
 import { StackActions } from '@react-navigation/native'
 import NavigationConstants from '../navigation/NavigationConstants';
-import CookieManager from 'react-native-cookies';
+import CookieManager from '@react-native-cookies/cookies';
 
 const Header = ({ navigation }) => {
     const clearCookies = async () => {

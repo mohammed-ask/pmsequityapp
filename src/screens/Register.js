@@ -5,7 +5,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import LoadingSpinner from "../Components/Loader";
 import { storeData } from "../utils/storage";
 import NavigationConstants from "../navigation/NavigationConstants";
-import CookieManager from 'react-native-cookies';
+// import CookieManager from 'react-native-cookies';
 import { StackActions } from '@react-navigation/native'
 
 const Register = ({ navigation }) => {

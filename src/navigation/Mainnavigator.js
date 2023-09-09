@@ -25,7 +25,7 @@ export const LoginStack = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen options={{ unmountOnBlur: true }} name="Login" component={LoginScreen} />
             <Stack.Screen name="Register" component={Register} />
             {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
             <Stack.Screen name="TabScreen" component={TabScreen} />

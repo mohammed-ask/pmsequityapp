@@ -5,7 +5,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import LoadingSpinner from "../Components/Loader";
 import { storeData } from "../utils/storage";
 import NavigationConstants from "../navigation/NavigationConstants";
-import CookieManager from 'react-native-cookies';
+import CookieManager from '@react-native-cookies/cookies';
 import { StackActions } from '@react-navigation/native'
 
 const LoginScreen = ({ navigation }) => {
@@ -69,21 +69,13 @@ const LoginScreen = ({ navigation }) => {
             if (c[0] == 'token') {
             }
         });
-        // if (Platform.OS == 'ios') {
-        //     if (data.includes('Cookie:')) {
-        //         const storedCookies = await CookieManager.get(
-        //             'https://hr.nazafat.com/',
-        //             true,
-        //         );
-        //     }
-        // }
     };
+
     if (pageSubmit) {
         return <LoadingSpinner />
     }
-    // useEffect(() => {
-    //     setPageSubmit(false)
-    // }, [])
+
+
     return (
         <View style={{ flex: 1 }}>
             <WebView
