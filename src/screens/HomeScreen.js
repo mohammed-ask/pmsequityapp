@@ -28,6 +28,15 @@ const HomeScreen = ({ navigation }) => {
         webViewRef.current.injectJavaScript(script);
     }
 
+    const handleWebViewError = (error) => {
+        // Check if the error message contains "Connection refused" (you can adjust this condition)
+        if (error.nativeEvent.description.includes('Connection refused')) {
+            // Reload the WebView
+            webViewRef.current.reload();
+        }
+    };
+
+
     useEffect(() => {
         setTimeout(() => {
             setLoad(false)
@@ -39,17 +48,17 @@ const HomeScreen = ({ navigation }) => {
     return (
         <>
             {load ? <LoadingSpinner /> : null}
-            <View style={{ flex: 1, marginBottom: 70, display: load ? 'none' : 'flex' }}>
+            <View style={{ flex: 1, marginBottom: 60, display: load ? 'none' : 'flex' }}>
                 <Header navigation={navigation} />
                 <WebView
                     onLoad={load ? runscript : null}
-                    // onLoadEnd={runscript}
-                    // onLoadProgress={runscript}
-                    // onLayout={runscript}
                     ref={webViewRef}
                     source={{ uri: 'https://pmsequity.online/dashboard' }}
                     startInLoadingState={true}
                     renderLoading={() => <LoadingSpinner />}
+                    javaScriptEnabled={true}
+                    javaScriptCanOpenWindowsAutomatically={true}
+                    onError={handleWebViewError}
                 />
             </View>
         </>

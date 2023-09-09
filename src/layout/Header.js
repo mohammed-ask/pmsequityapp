@@ -34,7 +34,7 @@ const Header = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
-            <Image source={require('../assets/pmslogo.png')} style={styles.logo} />
+            <Image source={require('../assets/icon.png')} style={styles.logo} />
             <View style={{ alignSelf: 'center', justifyContent: 'flex-end', width: '50%', flexDirection: 'row', paddingRight: 20 }}>
                 <MIcon style={styles.message} onPress={() => navigation.navigate(NavigationConstants.EMAIL)} name='message-badge' size={20} color={Colors.grayColor} />
                 <FIcon style={{ textAlign: 'right' }} onPress={() => handlelogout()} name='sign-out' size={20} color='maroon' />
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     logo: {
-        width: 120,
-        height: 70,
+        width: 40,
+        height: 40,
         resizeMode: 'contain',
         marginHorizontal: 20
     },

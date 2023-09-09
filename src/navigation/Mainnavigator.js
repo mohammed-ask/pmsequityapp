@@ -15,6 +15,7 @@ import Market from '../screens/Market';
 import Email from '../screens/Email';
 import Fund from '../screens/Fund';
 import Profile from '../screens/Profile';
+import Register from '../screens/Register';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,7 +26,7 @@ export const LoginStack = () => {
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={LoginScreen} />
+            <Stack.Screen name="Register" component={Register} />
             {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
             <Stack.Screen name="TabScreen" component={TabScreen} />
         </Stack.Navigator>
@@ -95,13 +96,13 @@ export const TabScreen = () => {
                 options={{
                     tabBarLabel: '',
                     tabBarItemStyle: {
-                        maxWidth: 50,
+                        maxWidth: 45,
                         backgroundColor: Colors.primaryColor,
-                        height: 50,
+                        height: 45,
                         borderRadius: 40,
                         marginBottom: 15,
                         marginTop: 10,
-                        paddingTop: 14,
+                        paddingTop: 8,
                         marginHorizontal: 15,
                         alignSelf: 'center'
                     }
@@ -160,7 +161,7 @@ const style = StyleSheet.create({
         resizeMode: 'contain',
     },
     tabstyle: {
-        height: 70,
+        height: 60,
         backgroundColor: Colors.whiteColor,
         // width: '90%',
         // marginBottom: 15,
@@ -174,11 +175,11 @@ const style = StyleSheet.create({
         },
         shadowOpacity: 0.2,
         shadowRadius: 5,
-        paddingTop: 14,
-        paddingBottom: 15,
+        paddingTop: 15,
+        paddingBottom: 8,
     },
     tablabel: {
-        fontSize: 11,
+        fontSize: 10,
         paddingBottom: 0,
         fontWeight: '500'
     }

@@ -1,9 +1,10 @@
 import { View, StatusBar, StyleSheet, Image, Text } from 'react-native'
 import React, { useEffect } from 'react'
-import splash from '../assets/pmslogo.png'
+import splash from '../assets/splash.png'
 import { replaceNavigation } from '../navigation/NavigationHandle'
 import NavigationConstants from '../navigation/NavigationConstants'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import Colors from '../constants/Colors'
 
 const SplashScreen = ({ navigation }) => {
 
@@ -45,10 +46,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: Colors.primaryColor
     },
     imageStyle: {
-        width: '100%',
+        width: '55%',
         alignSelf: 'center',
         resizeMode: 'contain'
     },

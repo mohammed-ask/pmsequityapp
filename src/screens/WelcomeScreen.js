@@ -12,14 +12,14 @@ const IntroductionScreens = ({ navigation }) => {
 
     const slides = [
         {
-            title: 'Welcome to My App',
-            text: 'Discover amazing features',
-            image: require('../assets/grouppeople.png'),
+            title: 'Investing for Everybody',
+            text: 'We let you easily invest in any shares for as litter as ₹100.',
+            image: require('../assets/image1.png'),
         },
         {
-            title: 'Easy to Use',
-            text: 'Intuitive and user-friendly interface',
-            image: require('../assets/people.png'),
+            title: 'Get Better Returns',
+            text: 'Invest in the India\'s leading brands and get better return',
+            image: require('../assets/image2.png'),
         },
     ];
 
@@ -78,10 +78,14 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: 'black'
     },
     text: {
-        fontSize: 16,
-        color: '#888',
+        marginTop: 10,
+        fontSize: 14,
+        color: '#C0C0C0',
+        marginHorizontal: 30,
+        textAlign: 'center'
     },
     dotStyle: {
         width: 25,
