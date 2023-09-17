@@ -82,6 +82,9 @@ export const TabScreen = () => {
             <Tab.Screen
                 name="Portfolio"
                 component={Portfolio}
+                listeners={({ navigation }) => ({
+                    blur: () => navigation.setParams({ query: null }),
+                })}
                 options={{
                     unmountOnBlur: true,
                     tabBarLabel: 'Portfolio',

@@ -7,7 +7,9 @@ import Header from "../layout/Header";
 import { baseURL } from "../utils/helpers";
 
 let pageSubmit = 2;
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, route }) => {
+    const query = route.params.query
+    console.log(query, 'qq')
     const [load, setLoad] = useState(true)
     const webViewRef = React.useRef(null);
 
@@ -67,7 +69,7 @@ const HomeScreen = ({ navigation }) => {
                 // onLoadProgress={runscript}
                 // onLayout={runscript}
                 ref={webViewRef}
-                source={{ uri: `${baseURL}portfolio` }}
+                source={{ uri: `${baseURL}portfolio${query}` }}
                 startInLoadingState={true}
                 renderLoading={() => <LoadingSpinner />}
                 onError={handleWebViewError}

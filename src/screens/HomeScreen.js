@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
     const runscript = async (data) => {
         const { nativeEvent } = data;
         if (nativeEvent.url.includes('https://pmsequity.online/portfolio')) {
-            navigation.navigate('Portfolio')
+            navigation.navigate('Portfolio', { query: '#aistock' })
             return
         }
         if (pageSubmit % 2 === 0) {
