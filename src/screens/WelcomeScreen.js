@@ -12,14 +12,14 @@ const IntroductionScreens = ({ navigation }) => {
 
     const slides = [
         {
-            title: 'Investing for Everybody',
-            text: 'We let you easily invest in any shares for as litter as ₹100.',
-            image: require('../assets/image1.png'),
-        },
-        {
             title: 'Get Better Returns',
             text: 'Invest in the India\'s leading brands and get better return',
             image: require('../assets/image2.png'),
+        },
+        {
+            title: 'Investing for Everybody',
+            text: 'We let you easily invest in any shares for as litter as ₹100.',
+            image: require('../assets/image1.png'),
         },
     ];
 

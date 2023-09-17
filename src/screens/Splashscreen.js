@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primaryColor
     },
     imageStyle: {
-        width: '55%',
+        width: '50%',
         alignSelf: 'center',
         resizeMode: 'contain'
     },

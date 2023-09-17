@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native'
 // import analytics from '@react-native-firebase/analytics'
+export const baseURL = 'https://pmsequity.online/'
 
 export const isEmpty = (value) =>
     value === undefined ||

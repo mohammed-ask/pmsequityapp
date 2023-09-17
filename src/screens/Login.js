@@ -40,41 +40,11 @@ const LoginScreen = ({ navigation }) => {
         if (url !== 'https://pmsequity.online/login') {
             setPageSubmit(true)
         }
-        console.log('page change')
-        // console.log(path)
-        const arr = url.split('/');
-        // if (arr[5] !== undefined && arr[5].length == 8) {
-        //     setIts(arr[5]);
-        //     setCookies(arr[4]);
-        // }
-        // setTimeout(() => {
-        //     if (url == 'https://hr.nazafat.com/dashboard') {
-        //         dispatch(checkSession(navigation));
-        //     } else if (url == 'https://hr.nazafat.com/profile') {
-        //         dispatch(checkSession(navigation));
-        //     }
-        // }, 700);
-    };
-
-    const onMessage = async event => {
-        const { data } = event.nativeEvent;
-        const cook = data.split(';'); // `csrftoken=...; rur=...; mid=...; somethingelse=...`
-        console.log(cook, 'coook')
-        await storeData('SignInData', JSON.stringify(cook))
-        navigation.navigate(NavigationConstants.HOME_SCREEN)
-        cook.forEach(cookie => {
-            const c = cookie.trim().split('=');
-            const new_cookies = cook;
-            new_cookies[c[0]] = c[1];
-            if (c[0] == 'token') {
-            }
-        });
     };
 
     if (pageSubmit) {
         return <LoadingSpinner />
     }
-
 
     return (
         <View style={{ flex: 1 }}>
@@ -82,8 +52,6 @@ const LoginScreen = ({ navigation }) => {
                 source={{ uri: 'https://pmsequity.online/login' }}
                 startInLoadingState={true}
                 renderLoading={() => <LoadingSpinner />}
-                // sharedCookiesEnabled={true}
-                // onMessage={onMessage}
                 onLoadProgress={path => {
                     onNavigationStateChange(path);
                 }}

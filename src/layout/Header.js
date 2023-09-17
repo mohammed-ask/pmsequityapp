@@ -8,6 +8,7 @@ import { removeData } from '../utils/storage';
 import { StackActions } from '@react-navigation/native'
 import NavigationConstants from '../navigation/NavigationConstants';
 import CookieManager from '@react-native-cookies/cookies';
+import NetinfoAlert from '../Components/NetInfo';
 
 const Header = ({ navigation }) => {
     const clearCookies = async () => {
@@ -34,10 +35,11 @@ const Header = ({ navigation }) => {
     };
     return (
         <View style={styles.container}>
+            <NetinfoAlert />
             <Image source={require('../assets/icon.png')} style={styles.logo} />
             <View style={{ alignSelf: 'center', justifyContent: 'flex-end', width: '50%', flexDirection: 'row', paddingRight: 20 }}>
                 <MIcon style={styles.message} onPress={() => navigation.navigate(NavigationConstants.EMAIL)} name='message-badge' size={20} color={Colors.grayColor} />
-                <FIcon style={{ textAlign: 'right' }} onPress={() => handlelogout()} name='sign-out' size={20} color='maroon' />
+                <FIcon style={{ textAlign: 'right' }} onPress={() => handlelogout()} name='sign-out' size={20} color={Colors.primaryColor} />
             </View>
         </View>
     );

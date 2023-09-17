@@ -8,7 +8,6 @@ import LoginScreen from '../screens/Login';
 import { Image, StyleSheet } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
-// import Icon from 'react-native-vector-icons/AntDesign'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Portfolio from '../screens/Portfolio';
 import Market from '../screens/Market';
@@ -16,6 +15,7 @@ import Email from '../screens/Email';
 import Fund from '../screens/Fund';
 import Profile from '../screens/Profile';
 import Register from '../screens/Register';
+import Test from '../screens/Test';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,19 +43,19 @@ export const TabScreen = () => {
                     let iconName;
                     if (route.name === 'Home') {
                         iconName = 'view-dashboard';
-                        color = focused ? Colors.blackColor : Colors.grayColor;
+                        color = focused ? Colors.primaryColor : Colors.grayColor;
                     } else if (route.name === 'Market') {
                         iconName = 'chart-bell-curve';
                         color = focused ? Colors.whiteColor : Colors.whiteColor;
                     } else if (route.name === 'Portfolio') {
                         iconName = 'folder-table';
-                        color = focused ? Colors.blackColor : Colors.grayColor;
+                        color = focused ? Colors.primaryColor : Colors.grayColor;
                     } else if (route.name === 'Fund') {
                         iconName = 'wallet';
-                        color = focused ? Colors.blackColor : Colors.grayColor;
+                        color = focused ? Colors.primaryColor : Colors.grayColor;
                     } else if (route.name === 'Profile') {
                         iconName = 'account-cog';
-                        color = focused ? Colors.blackColor : Colors.grayColor;
+                        color = focused ? Colors.primaryColor : Colors.grayColor;
                     }
                     return <Icon name={iconName} color={color} size={22} />;
                 },
@@ -70,6 +70,7 @@ export const TabScreen = () => {
                 name="Home"
                 component={HomeScreen}
                 options={{
+                    unmountOnBlur: true,
                     tabBarLabel: 'Home',
                     tabBarItemStyle: {
                         // borderRightWidth: 0.5,
@@ -82,6 +83,7 @@ export const TabScreen = () => {
                 name="Portfolio"
                 component={Portfolio}
                 options={{
+                    unmountOnBlur: true,
                     tabBarLabel: 'Portfolio',
                     tabBarItemStyle: {
                         // borderRightWidth: 0.5,
@@ -94,6 +96,7 @@ export const TabScreen = () => {
                 name="Market"
                 component={Market}
                 options={{
+                    unmountOnBlur: true,
                     tabBarLabel: '',
                     tabBarItemStyle: {
                         maxWidth: 45,
@@ -113,20 +116,13 @@ export const TabScreen = () => {
                 component={Email}
                 options={{
                     tabBarButton: () => null,
-                    tabBarLabel: '',
-                    tabBarItemStyle: {
-                        // borderRightWidth: 0.5,
-                        // borderRightColor: '#E0E0E0',
-                        alignSelf: 'center',
-                        // justifyContent: 'flex-end',
-                        // backgroundColor: 'green'
-                    },
                 }}
             />
             <Tab.Screen
                 name="Fund"
                 component={Fund}
                 options={{
+                    unmountOnBlur: true,
                     tabBarLabel: 'Wallet',
                     tabBarItemStyle: {
                         // borderRightWidth: 0.5,
@@ -148,6 +144,14 @@ export const TabScreen = () => {
                         // justifyContent: 'flex-end',
                         // backgroundColor: 'green'
                     },
+                }}
+            />
+            <Tab.Screen
+                name="Test"
+                component={Test}
+                options={{
+                    unmountOnBlur: true,
+                    tabBarButton: () => null,
                 }}
             />
         </Tab.Navigator>

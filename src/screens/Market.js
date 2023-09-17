@@ -4,17 +4,31 @@ import { WebView } from "react-native-webview";
 import LoadingSpinner from "../Components/Loader";
 import { getValue } from "../utils/storage";
 import Header from "../layout/Header";
-const HomeScreen = ({ navigation }) => {
+import { baseURL } from "../utils/helpers";
+
+let pageSubmit = 2;
+const Market = ({ navigation }) => {
+
     const [load, setLoad] = useState(true)
     const webViewRef = React.useRef(null);
 
-    const runscript = async () => {
-        const data = await getValue('SignInData')
-        // const data = JSON.stringify(postData);
-        const script = `
+    useEffect(() => {
+        const bgchange = navigation.addListener('tabPress', () => {
+            navigation.navigate('Test');
+        });
+        return bgchange;
+    }, [navigation]);
+
+    const runscript = async (data) => {
+        const { nativeEvent } = data;
+        if (pageSubmit % 2 === 0 && nativeEvent.url === 'https://pmsequity.online/market') {
+            console.log('firsttime')
+            const data = await getValue('SignInData')
+            // const data = JSON.stringify(postData);
+            const script = `
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'https://pmsequity.online/market';
+                form.action = '${baseURL}market';
 
                 const input = document.createElement('input');
                 input.type = 'hidden';
@@ -25,7 +39,44 @@ const HomeScreen = ({ navigation }) => {
                 document.body.appendChild(form);
                 form.submit();
               `;
-        webViewRef.current.injectJavaScript(script);
+            webViewRef.current.injectJavaScript(script);
+            setTimeout(() => {
+                setLoad(false)
+            }, 1000)
+            pageSubmit = pageSubmit + 1
+        } else if (pageSubmit % 2 === 0 && nativeEvent.url.includes('https://pmsequity.online/viewchart')) {
+            console.log('firsttime')
+            const queryString = nativeEvent.url.split('?')[1];
+            const data = await getValue('SignInData')
+            // const data = JSON.stringify(postData);
+            const script = `
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '${baseURL}viewchart?${queryString}';
+
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'postData';
+                input.value = ${data};
+
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+              `;
+            webViewRef.current.injectJavaScript(script);
+            setTimeout(() => {
+                setLoad(false)
+            }, 1000)
+            pageSubmit = pageSubmit + 1
+        }
+        else {
+            console.log('secondtime')
+            pageSubmit = pageSubmit + 1
+
+            // setLoad(true)
+            // setTimeout(() => {
+            // }, 2000)
+        }
     }
 
     const handleWebViewError = (error) => {
@@ -36,32 +87,21 @@ const HomeScreen = ({ navigation }) => {
         }
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoad(false)
-        }, 3000)
-
-    }, []);
-
-    console.log(load, 'lll')
-
     return (
-        <>
+        <View style={{ flex: 1, marginBottom: 60 }}>
             {load ? <LoadingSpinner /> : null}
-            <View style={{ flex: 1, marginBottom: 60, display: load ? 'none' : 'flex' }}>
-                <Header navigation={navigation} />
-                <WebView
-                    onLoad={load ? runscript : null}
-                    ref={webViewRef}
-                    source={{ uri: 'https://pmsequity.online/market' }}
-                    startInLoadingState={true}
-                    renderLoading={() => <LoadingSpinner />}
-                    onError={handleWebViewError}
-                />
-            </View>
-        </>
+            <Header navigation={navigation} />
+            <WebView
+                onLoad={runscript}
+                ref={webViewRef}
+                source={{ uri: `${baseURL}market` }}
+                startInLoadingState={true}
+                renderLoading={() => <LoadingSpinner />}
+                onError={handleWebViewError}
+            />
+        </View>
     );
 };
 
-export default HomeScreen;
+export default Market;
 
