@@ -62,7 +62,7 @@ const HomeScreen = ({ navigation }) => {
             {load ? <LoadingSpinner /> : null}
             <Header navigation={navigation} />
             <WebView
-                onLoad={runscript}
+                // onLoad={runscript}
                 ref={webViewRef}
                 source={{ uri: `${baseURL}fund` }}
                 startInLoadingState={true}

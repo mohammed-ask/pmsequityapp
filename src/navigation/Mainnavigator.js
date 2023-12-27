@@ -28,7 +28,7 @@ export const LoginStack = () => {
             <Stack.Screen options={{ unmountOnBlur: true }} name="Login" component={LoginScreen} />
             <Stack.Screen name="Register" component={Register} />
             {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
-            <Stack.Screen name="TabScreen" component={TabScreen} />
+            <Stack.Screen name="TabScreen" component={HomeScreen} />
         </Stack.Navigator>
     );
 };
@@ -36,6 +36,7 @@ export const LoginStack = () => {
 export const TabScreen = () => {
     return (
         <Tab.Navigator
+            tabBarStyle={{ display: 'none', backgroundColor: 'green' }}
             screenOptions={({ route }) => ({
                 headerShown: false,
                 unmountOnBlur: false,
@@ -67,6 +68,7 @@ export const TabScreen = () => {
             })}
             backBehavior={'history'}>
             <Tab.Screen
+                tabBarStyle={{ display: 'none' }}
                 name="Home"
                 component={HomeScreen}
                 options={{

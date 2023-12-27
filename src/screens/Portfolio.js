@@ -8,7 +8,7 @@ import { baseURL } from "../utils/helpers";
 
 let pageSubmit = 2;
 const HomeScreen = ({ navigation, route }) => {
-    const query = route.params.query
+    const query = route?.params?.query
     console.log(query, 'qq')
     const [load, setLoad] = useState(true)
     const webViewRef = React.useRef(null);
@@ -64,7 +64,7 @@ const HomeScreen = ({ navigation, route }) => {
             {load ? <LoadingSpinner /> : null}
             <Header navigation={navigation} />
             <WebView
-                onLoad={runscript}
+                // onLoad={runscript}
                 // onLoadEnd={runscript}
                 // onLoadProgress={runscript}
                 // onLayout={runscript}

@@ -37,8 +37,12 @@ const LoginScreen = ({ navigation }) => {
     const onNavigationStateChange = path => {
         const url = path.nativeEvent.url;
         console.log(url, '---', pageSubmit)
-        if (url !== 'https://pmsequity.online/login') {
+        if (url === 'https://pmsequity.online/dashboard') {
             setPageSubmit(true)
+        } else if (url === 'https://pmsequity.online/register') {
+            navigation.navigate('forgotpassword')
+        } else if (url === 'https://pmsequity.online/index') {
+            navigation.navigate('WelcomeScreen')
         }
     };
 

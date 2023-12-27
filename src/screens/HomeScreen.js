@@ -66,23 +66,21 @@ const HomeScreen = ({ navigation }) => {
         }, 2000);
     };
 
-    console.log(load, 'dd')
+    // console.log(load, 'dd')
     return (
         <View style={{ flex: 1 }}>
-            <ScrollView refreshControl={
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            } style={{ maxHeight: 60, backgroundColor: 'pink' }} scrollEnabled={false}>
+            {/* <ScrollView style={{ maxHeight: 60, backgroundColor: 'pink' }} scrollEnabled={false}>
                 <Header navigation={navigation} />
-            </ScrollView>
-            {load ? <LoadingSpinner /> : null}
+            </ScrollView> */}
+            {/* {load ? <LoadingSpinner /> : null} */}
             <WebView
                 source={{ uri: `${baseURL}dashboard` }}
-                onLoad={runscript}
+                // onLoad={runscript}
                 ref={webViewRef}
                 startInLoadingState={true}
-                renderLoading={() => <LoadingSpinner />}
+            // renderLoading={() => <LoadingSpinner />}
             />
-        </View>
+        </View >
     );
 };
 
